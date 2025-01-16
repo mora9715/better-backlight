@@ -1,0 +1,11 @@
+[tool.isort]
+profile = "black"
+
+[tool.pylint]
+disable = [
+    "missing-function-docstring",
+    "missing-module-docstring",
+    "missing-class-docstring",
+    "fixme"
+]
+ignored-classes = "evdev.ecodes"

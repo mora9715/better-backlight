@@ -1,0 +1,13 @@
+[Unit]
+Description=Better Backlight Service
+After=network.target
+
+[Service]
+Type=exec
+ExecStart=/opt/better-backlight/bin/better-backlight
+Restart=always
+WorkingDirectory=/opt/better-backlight/
+Environment="PYTHONPATH=/opt/better-backlight/"
+
+[Install]
+WantedBy=multi-user.target
