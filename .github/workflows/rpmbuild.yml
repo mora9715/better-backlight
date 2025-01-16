@@ -1,0 +1,35 @@
+name: Build and Upload RPM Package
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build-rpm:
+    runs-on: ubuntu-latest
+    container: fedora:latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: |
+          dnf install -y rpm-build rpmdevtools createrepo make
+
+      - name: Setup RPM Build Environment
+        run: |
+          rpmdev-setuptree
+          mkdir -p ~/rpmbuild/{SOURCES,SPECS}
+
+      - name: Copy Files to Build Environment
+        run: |
+          make build
+
+      - name: Upload RPM Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rpm-package
+          path: ~/rpmbuild/RPMS/**/*.rpm
