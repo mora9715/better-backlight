@@ -14,6 +14,13 @@ If the user set a specific brightness level, Better Backlight will not go beyond
 - Automatic keyboard backlight control.
 - Automatic detection of supported backlit keyboard devices.
 
+## How it works
+
+The service listens to input device events through the `evdev` interface. When user activity is detected, the service
+enables the keyboard backlight through sysfs led management interface.
+
+If no user activity is detected for a period of time, the service disables the keyboard backlight.
+
 ## Installation
 
 The service is provided as an RPM package. The latest release can be found in
