@@ -4,6 +4,8 @@ from datetime import datetime
 
 @dataclass
 class SharedState:
+    """Used to track the state of the backlight and input devices."""
+
     last_input_activity_at: datetime | None
     last_brightness: int
     max_brightness: int

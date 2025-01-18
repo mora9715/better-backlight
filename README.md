@@ -14,15 +14,35 @@ If the user set a specific brightness level, Better Backlight will not go beyond
 - Automatic keyboard backlight control.
 - Automatic detection of supported backlit keyboard devices.
 
-## Known Supported Devices
+## Installation
 
-- ThinkPad laptops
-- Dell laptops
+The service is provided as an RPM package. The latest release can be found in
+the [Releases](https://github.com/mora9715/better-backlight/releases) page.
+
+To install the package, run the following command:
+
+```shell
+sudo dnf install better-backlight-<version>.rpm
+```
+
+## Configuration
+
+The service is configured using a configuration file located at `/etc/better-backlight.conf`.
+
+A default configuration file with descriptions for each option is provided in the repository. It can be
+found [here](packaging/etc/better-backlight.conf).
+
+To modify the configuration, edit the file `etc/better-backlight.conf` and restart the service.
+
+```shell
+sudo systemctl restart better-backlight
+```
 
 ## TODO's
 
-| Feature          | Description                                                              | Status  |
-|------------------|--------------------------------------------------------------------------|---------|
-| Configuration    | Add configuration file to allow users to customize the behavior          | Pending |
-| Power Management | Add ability to keep the backlight enabled when the system is on AC power | Pending |
-| Debian Packaging | Configure .deb packages building for easier installation                 | Pending |
+| Item             | Description                                                              | Status |
+|------------------|--------------------------------------------------------------------------|:------:|
+| Configuration    | Add configuration file to allow users to customize the behavior          |   ✅    |
+| Power Management | Add ability to keep the backlight enabled when the system is on AC power |   ❌    |
+| Debian Packaging | Configure .deb packages building for easier installation                 |   ❌    |
+| Tests            | Add unit tests to ensure the service works as expected                   |   ❌    |

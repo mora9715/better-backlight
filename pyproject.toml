@@ -6,6 +6,11 @@ disable = [
     "missing-function-docstring",
     "missing-module-docstring",
     "missing-class-docstring",
-    "fixme"
+    "fixme",
+    "logging-fstring-interpolation"
+
 ]
 ignored-classes = "evdev.ecodes"
+
+[tool.black]
+line-length = 100
