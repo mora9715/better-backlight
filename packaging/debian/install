@@ -1,0 +1,6 @@
+packaging/etc/better-backlight.conf /etc/
+packaging/usr/lib/systemd/system/better-backlight.service /usr/lib/systemd/system/
+
+Pipfile /opt/better-backlight/
+Pipfile.lock /opt/better-backlight/
+better_backlight/* /opt/better-backlight/better_backlight/

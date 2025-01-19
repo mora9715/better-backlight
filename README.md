@@ -23,33 +23,51 @@ If no user activity is detected for a period of time, the service disables the k
 
 ## Installation
 
-The service is provided as an RPM package. The latest release can be found in
+The service is provided as RPM/DEB packages. The latest release can be found in
 the [Releases](https://github.com/mora9715/better-backlight/releases) page.
 
 To install the package, run the following command:
 
+### Debian-based systems
+
 ```shell
-sudo dnf install better-backlight-<version>.rpm
+wget https://github.com/mora9715/better-backlight/releases/latest/download/better-backlight-<version>.deb
+sudo apt install ./better-backlight-<version>.rpm
+```
+
+### RedHat-based systems
+
+```shell
+wget https://github.com/mora9715/better-backlight/releases/latest/download/better-backlight-<version>.rpm
+sudo dnf install ./better-backlight-<version>.rpm
 ```
 
 ## Configuration
 
-The service is configured using a configuration file located at `/etc/better-backlight.conf`.
+The configuration file is located at `/etc/better-backlight.conf`.
 
-A default configuration file with descriptions for each option is provided in the repository. It can be
-found [here](packaging/etc/better-backlight.conf).
+1. Modify the configuration:
 
-To modify the configuration, edit the file `etc/better-backlight.conf` and restart the service.
+```shell
+sudo nano /etc/better-backlight.conf
+```
+
+2. Restart the service:
 
 ```shell
 sudo systemctl restart better-backlight
 ```
 
-## TODO's
+A sample configuration file with detailed descriptions can be found [here](packaging/etc/better-backlight.conf).
 
-| Item             | Description                                                              | Status |
-|------------------|--------------------------------------------------------------------------|:------:|
-| Configuration    | Add configuration file to allow users to customize the behavior          |   ✅    |
-| Power Management | Add ability to keep the backlight enabled when the system is on AC power |   ❌    |
-| Debian Packaging | Configure .deb packages building for easier installation                 |   ❌    |
-| Tests            | Add unit tests to ensure the service works as expected                   |   ❌    |
+## TODO List
+
+The following features are planned for the first stable release:
+
+| Item               | Description                                                              | Status |
+|--------------------|--------------------------------------------------------------------------|:------:|
+| Configuration      | Add configuration file to allow users to customize the behavior          |   ✅    |
+| Debian Packaging   | Configure .deb packages building for easier installation                 |   ✅    |
+| Power Management   | Add ability to keep the backlight enabled when the system is on AC power |   ❌    |
+| Security Hardening | Add SELinux and/or AppArmor policies for enhanced security               |   ❌    |
+| Tests              | Add unit tests to ensure the service works as expected                   |   ❌    |

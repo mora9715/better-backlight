@@ -6,7 +6,7 @@ on:
       - '*'
 
 jobs:
-  build-and-release-fedora:
+  build-and-release-rpm:
     runs-on: ubuntu-latest
     container: fedora:latest
 
@@ -25,7 +25,7 @@ jobs:
 
       - name: Build RPM Files
         run: |
-          make build-rpm
+          make build-rhel
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2

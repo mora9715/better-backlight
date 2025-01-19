@@ -1,0 +1,26 @@
+#!/usr/bin/sh
+
+set -e
+
+case "$1" in
+    remove)
+        systemctl disable --now better-backlight.service
+        rm -rf /opt/better-backlight/venv
+        rm -rf /opt/better-backlight/bin
+    ;;
+    upgrade)
+        if systemctl is-enabled --quiet better-backlight.service; then
+            systemctl restart better-backlight.service
+        fi
+    ;;
+
+    failed-upgrade)
+    ;;
+
+    *)
+        echo "prerm called with unknown argument '$1'" >&2
+        exit 1
+    ;;
+esac
+
+exit 0
