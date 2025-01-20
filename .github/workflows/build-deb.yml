@@ -1,0 +1,27 @@
+name: Build and Release DEB Package
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build-and-release-deb:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: |
+          sudo apt install -y debhelper make build-essential
+
+      - name: Build DEB Files
+        run: |
+          make build-deb; pwd; ls -lah; ls -lah ../
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: /home/runner/work/better-backlight/better-backlight_*.deb

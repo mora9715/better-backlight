@@ -64,8 +64,7 @@ pip install pipenv
 pipenv install
 
 if [ $1 -eq 1 ]; then
-    systemctl enable better-backlight
-    systemctl start better-backlight
+    systemctl enable --now better-backlight
 else
     systemctl restart better-backlight
 fi
