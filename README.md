@@ -68,6 +68,6 @@ The following features are planned for the first stable release:
 |--------------------|--------------------------------------------------------------------------|:------:|
 | Configuration      | Add configuration file to allow users to customize the behavior          |   ✅    |
 | Debian Packaging   | Configure .deb packages building for easier installation                 |   ✅    |
+| Tests              | Add unit tests to ensure the service works as expected                   |   ✅    |
 | Power Management   | Add ability to keep the backlight enabled when the system is on AC power |   ❌    |
 | Security Hardening | Add SELinux and/or AppArmor policies for enhanced security               |   ❌    |
-| Tests              | Add unit tests to ensure the service works as expected                   |   ❌    |

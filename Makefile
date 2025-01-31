@@ -1,10 +1,16 @@
 format:
-	black ./better_backlight
-	isort ./better_backlight
+	black ./better_backlight ./tests
+	isort ./better_backlight ./tests
 
 lint:
-	pylint ./better_backlight
+	pylint ./better_backlight ./tests
 
+format-check:
+	black --check ./better_backlight ./tests
+	isort --check ./better_backlight ./tests
+
+test:
+	PYTHONPATH=./ pytest ./tests
 
 build-rhel:
 	rm -rf ~/rpmbuild/SOURCES/*

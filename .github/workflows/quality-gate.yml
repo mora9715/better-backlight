@@ -1,0 +1,40 @@
+name: Quality Gate
+
+on:
+  push:
+    branches:
+      - "**"
+  pull_request:
+    branches:
+      - "**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install pipenv
+        run: pip install pipenv
+
+      - name: Install dependencies
+        run: pipenv install --dev --system
+
+      - name: Ensure make is installed
+        run: sudo apt-get install -y make
+
+      - name: Run formatters
+        run: make format-check
+
+      - name: Run linters
+        run: make lint
+
+      - name: Run tests
+        run: make test
