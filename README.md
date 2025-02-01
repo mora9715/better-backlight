@@ -42,6 +42,16 @@ wget https://github.com/mora9715/better-backlight/releases/latest/download/bette
 sudo dnf install ./better-backlight-<version>.rpm
 ```
 
+## Service Management
+
+After installing, you can manage the service using `systemctl`:
+
+```bash
+sudo systemctl enable better-backlight   # Enable service at boot
+sudo systemctl start better-backlight    # Start service immediately
+sudo systemctl status better-backlight   # Check current status
+```
+
 ## Configuration
 
 The configuration file is located at `/etc/better-backlight.conf`.
@@ -59,6 +69,16 @@ sudo systemctl restart better-backlight
 ```
 
 A sample configuration file with detailed descriptions can be found [here](packaging/etc/better-backlight.conf).
+
+## Troubleshooting
+
+If the service is not working as expected, you can check the logs for more information:
+
+```shell
+journalctl -u better-backlight
+# OR
+tail -f /var/log/better-backlight.log
+```
 
 ## TODO List
 
